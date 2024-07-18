@@ -115,7 +115,7 @@ bool IsSshConnectionAlive(std::chrono::time_point<std::chrono::steady_clock> las
 
 ErrorMessageOr<std::unique_ptr<OrbitGrpcServer>> CreateGrpcServer(uint16_t grpc_port,
                                                                   bool dev_mode) {
-  std::string grpc_address = absl::StrFormat("127.0.0.1:%d", grpc_port);
+  std::string grpc_address = absl::StrFormat("0.0.0.0:%d", grpc_port);
   ORBIT_LOG("Starting gRPC server at %s", grpc_address);
   std::unique_ptr<OrbitGrpcServer> grpc_server = OrbitGrpcServer::Create(grpc_address, dev_mode);
   if (grpc_server == nullptr) {
